@@ -17,3 +17,18 @@ Bila kita ingin mengganti port dari 2000 menjadi 8080, ada beberapa hal yang per
 
 ![Alt text](image-4.png)
 ![Alt text](image-5.png)
+
+## 2.3: Small changes, add IP and Port
+
+Karena kita ingin memodifikasi server agar setiap pesan yang dikirim ke semua client disertai informasi IP dan port pengirim, maka kita harus memodifikasi server side-nya. Pada bagian ini (server side): 
+> bcast_tx.send(text.into())?; 
+
+Kita akan ubah menjadi:
+> let tagged_text = format!("[{}] {}", addr, text);  
+bcast_tx.send(tagged_text)?;
+
+Ini membuat pesan yang dikirim ke channel broadcast berisi identitas pengirim. Setelah itu, setiap client mengirim pesan, maka server akan mengembalikan IP dan portnya.
+
+![Alt text](image-6.png)
+![Alt text](image-7.png)
+![Alt text](image-8.png)
