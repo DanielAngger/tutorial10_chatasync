@@ -10,3 +10,10 @@ Jadi, ketika Client A mengirim "halo", handle_connection A menerima halo lewat w
 ![Alt text](image-1.png)
 ![Alt text](image-2.png)
 ![Alt text](image-3.png)
+
+## 2.2. Modifying the websocket port
+
+Bila kita ingin mengganti port dari 2000 menjadi 8080, ada beberapa hal yang perlu diperhatikan. Karena disini ada server dan client, maka kita tidak cukup mengganti port di server saja, tetapi juga di sisi client. Dan disni, jelas client masih menggunakan WebSocket protocol, dan itu didefinisikan secara eksplisit di from_uri(...) melalui bagian "ws://...". Tidak ada perbedaan yang berarti setelah merubah port dari 2000 menjadi 8080, karena port merupakan pintu masuk saja. Jadi disini, selama port yang baru (8080) tidak digunakan oleh proses lain (misal server web lokal), maka program akan tetap berjalan sama seperti sebelumnya.
+
+![Alt text](image-4.png)
+![Alt text](image-5.png)
